@@ -1,9 +1,9 @@
 package de.louiletsplaypro.nohorn;
 
-import de.louiletsplaypro.nohorn.commands.toggleHorns;
-import de.louiletsplaypro.nohorn.commands.togglePotions;
-import de.louiletsplaypro.nohorn.listener.inventoryHorn;
-import de.louiletsplaypro.nohorn.listener.inventoryPotion;
+import de.louiletsplaypro.nohorn.commands.ToggleHorns;
+import de.louiletsplaypro.nohorn.commands.TogglePotions;
+import de.louiletsplaypro.nohorn.listener.InventoryHorn;
+import de.louiletsplaypro.nohorn.listener.InventoryPotion;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,11 +17,11 @@ public final class Nohorn extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
 
-        registerCommand("toggleHorn", new toggleHorns());
-        registerCommand("togglePotion", new togglePotions());
+        registerCommand("toggleHorn", new ToggleHorns());
+        registerCommand("togglePotion", new TogglePotions());
 
-        getServer().getPluginManager().registerEvents(new inventoryHorn(), this);
-        getServer().getPluginManager().registerEvents(new inventoryPotion(), this);
+        getServer().getPluginManager().registerEvents(new InventoryHorn(), this);
+        getServer().getPluginManager().registerEvents(new InventoryPotion(), this);
 
     }
 
