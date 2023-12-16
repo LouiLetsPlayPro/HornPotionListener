@@ -1,0 +1,5 @@
+de\louiletsplaypro\nohorn\commands\toggleHorns.class
+de\louiletsplaypro\nohorn\listener\inventoryPotion.class
+de\louiletsplaypro\nohorn\commands\togglePotions.class
+de\louiletsplaypro\nohorn\Nohorn.class
+de\louiletsplaypro\nohorn\listener\inventoryHorn.class

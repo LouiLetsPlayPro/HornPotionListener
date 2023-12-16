@@ -1,0 +1,70 @@
+package de.louiletsplaypro.nohorn.listener;
+
+import de.louiletsplaypro.nohorn.Nohorn;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCreativeEvent;
+import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+
+public class inventoryPotion implements Listener{
+
+    @EventHandler
+    public void onPlayerInteract(PlayerInteractEvent event) {
+        ItemStack item = event.getItem();
+
+        // Überprüfe, ob der Spieler einen Trank benutzen will
+        if (item != null && item.getType() == Material.POTION || item.getType() == Material.LINGERING_POTION || item.getType() == Material.SPLASH_POTION) {
+
+            // Überprüfe, ob die Variable true ist
+            if (!Nohorn.isActivePotions()) {
+                event.setCancelled(true);
+            }
+        }
+    }
+
+    @EventHandler(ignoreCancelled = true)
+    public void onInventoryClick(InventoryClickEvent event) {
+
+        if (event.getWhoClicked() instanceof Player) {
+            Inventory clickedInventory = event.getClickedInventory();
+            ItemStack clickedItem = event.getCurrentItem();
+
+            // Überprüfe, ob ein Trank aus dem kreativen Inventar genommen werden soll
+            if (clickedInventory != null && clickedInventory.getType() == InventoryType.CREATIVE) {
+                if (clickedItem != null && clickedItem.getType() == Material.POTION) {
+
+                    // Überprüfe, ob die Variable true ist
+                    if (!Nohorn.isActivePotions()) {
+                        // Die Variable ist false, verhindere das Nehmen des Tranks
+                        event.setCancelled(true);
+                    }
+                }
+            }
+        }
+
+    }
+
+    @EventHandler
+    public void onInventoryCreative(InventoryCreativeEvent event) {
+        if (event.getWhoClicked() instanceof Player) {
+            ItemStack clickedItem = event.getCursor();
+
+            // Überprüfe, ob ein Trank aus dem kreativen Inventar genommen werden soll
+            if (clickedItem.getType() == Material.POTION) {
+
+                // Überprüfe, ob die Variable true ist
+                if (!Nohorn.isActivePotions()) {
+                    // Die Variable ist false, verhindere das Nehmen des Tranks
+                    event.setCancelled(true);
+                }
+            }
+        }
+    }
+
+}

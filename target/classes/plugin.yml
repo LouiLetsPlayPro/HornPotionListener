@@ -1,0 +1,14 @@
+name: nohorn
+version: '1.0'
+main: de.louiletsplaypro.nohorn.Nohorn
+api-version: '1.19'
+
+commands:
+  toggleHorn:
+    description: "Toggle die verwendung von Hörnern"
+    permission: "toggle.horn"
+    permission-message: "Du hast nicht die erforderlichen Berechtigungen, um diesen Befehl zu verwenden."
+  togglePotion:
+    description: "Toggle die verwendung von Potions"
+    permission: "toggle.potion"
+    permission-message: "Du hast nicht die erforderlichen Berechtigungen, um diesen Befehl zu verwenden."
